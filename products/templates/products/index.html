@@ -1,0 +1,56 @@
+{% if all_products%}
+<h3 align="center">hyperwaveath</h3>
+<input type="text" placeholder="Search" style="margin-left:60%;">
+<div style="display:flex;">
+<div style="display:inline-block;">
+<ul>
+    <li>All</li>
+    <li>New</li>
+    <li>Jackets</li>
+    <li>Shirts</li>
+    <li>Tops/Sweaters</li>
+    <li>Sweatshirts</li>
+    <li>Pants</li>
+    <li>T-Shirts</li>
+    <li>Hats</li>
+    <li>Bags</li>
+    <li>Accessories</li>
+    <li>Skates</li>
+    
+</ul>
+</div>
+
+<ul>
+<div style=" width:80%; margin-left:5%;" >
+   
+    {% for product in all_products%}
+    
+    <div style="display: inline-block; margin-left:55px; margin-top:20px; background-color:ghostwhite">
+    <li><a href="{{product.product_id}}/">{{product.product_name}}</a></li>
+    <p>Product id : {{product.product_id}}</p>
+    -------------------------------------------
+    <p>{{product.product_description}}</p>
+    <p>{{product.product_size}}</p>
+    -------------------------------------------
+    <p>{{product.product_price}}$</p>
+    {%  if product.product_quantity %}
+        <p>Items left:{{product.product_quantity}}</p>
+    {% else %}
+        <p>SOLD OUT</p>    
+
+    {% endif %}
+    <img src="{{product.product_photo.url}}" width="250px"; height="200px";/>
+
+
+    </div>
+
+
+    {% endfor %}
+</div>  
+</ul>
+</div>
+      
+
+{% else %}
+    <h3>no products</h3>
+{% endif %}
